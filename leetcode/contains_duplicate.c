@@ -13,7 +13,7 @@ int hash_func(int num) {
 bool containsDuplicate(int* nums, int numsSize) {
    int i;
 
-   if( numsSize == 0 || numsSize ==1 )
+   if( numsSize == 0 || numsSize == 1 )
        return false;
 
    for( i = 0 ; i < numsSize ; i++ ) {
