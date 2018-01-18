@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void quicksort(int *nums, int left, int right) {
+    int i, j, s, tmp;
+
+    if( left < right ) {
+        s = nums[left];
+        i = left + 1; j = right;
+
+        while( i < j ) {
+            while( nums[i] < s )
+                i++;
+
+            while( nums[j] > s )
+                j--;
+
+            if( i < j ) {
+                tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+            }
+        }
+        
+        tmp = nums[j];
+        nums[j] = nums[left];
+        nums[left] = tmp;
+
+        quicksort(nums, left, j - 1);
+        quicksort(nums, j + 1, right);
+    }
+}
+
+int singleNumber(int* nums, int numsSize) {
+    int i;
+
+    quicksort(nums, 0, numsSize - 1);
+
+    for( i = 0 ; i < numsSize ; i = i + 2 ) {
+        if( nums[i] != nums[i+1] )
+            break;
+    }
+
+    return nums[i];
+}
+
+int main(void) {
+    int arr[] = {2, 3, 3, 1, 1, 2, 5};
+    int size = sizeof(arr) / sizeof(int);
+
+    printf("%d\n", singleNumber(arr, size));
+
+    return 0;
+}
