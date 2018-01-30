@@ -42,8 +42,13 @@ int reverse(int x) {
     int res = 0;
 
     while( x != 0 ) {
+        // -2147483648 <= int <= 2147483647
+        // INT_MAX = 2147483647
+        // max res = 2147483641 or 2147483642
+        // but 2463847412 is overflow
         if( abs(res) > (INT_MAX/10) )
             return 0;
+
         res = res * 10 + x % 10;
         x /= 10;
     }
