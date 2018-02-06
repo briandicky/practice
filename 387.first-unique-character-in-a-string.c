@@ -32,11 +32,11 @@
 //#include <stdlib.h>
 
 int firstUniqChar(char* s) {
-    int ch[260];
+    int ch[256];
     int i;
     int index = -1;
 
-    for( i = 0 ; i < 260 ; i++) 
+    for( i = 0 ; i < 256 ; i++) 
         ch[i] = 0;
 
     for( i = 0 ; *(s+i) ; i++ ) 
